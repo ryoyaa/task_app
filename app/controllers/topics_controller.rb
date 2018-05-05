@@ -4,6 +4,8 @@ class TopicsController < ApplicationController
 
   def index
     @topics = Topic.all
+    @user = current_user
+    @new_topics = @user.topics.order(created_at: :desc).limit(5)
   end
 
   def show

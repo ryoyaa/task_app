@@ -1,22 +1,35 @@
 <div class="topic-index-wrapper">
   <div class="container">
     <div class="row">
-      <div class="col-md-9">
+      <div class="col-md-8">
         <h1>Topic 一覧</h1>
         <ul>
           <% @topics.each do |topic|  %>
             <div class="row">
-              <div class="col-md-9">
-                <div class="topic-index-single">
-                  <li><%= link_to topic.title, topic_path(topic) %></li>
-                </div>
+              <div class="topic-index-single">
+                <li><%= link_to topic.title, topic_path(topic) %></li>
               </div>
             </div>
-
           <% end %>
         </ul>
-        <%= link_to "投稿", new_topic_path %>
+        <%= link_to "投稿", new_topic_path, class: "btn btn-primary" %>
       </div>
+      <% if current_user %>
+      <div class="col-md-4">
+        <div class="thumbnail">
+          <div class="caption">
+            <h3>Name：<%= @user.name %></h3>
+          </div>
+        </div>
+        <% if @user.topics %>
+          <div class="list-group">
+              <% @new_topics.each do |topic| %>
+                <%= link_to topic.title, topic, class: "list-group-item" %>
+              <% end %>
+          </div>
+        <% end %>
+      </div>
+      <% end %>
     </div>
   </div>
 </div>
