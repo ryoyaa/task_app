@@ -3,9 +3,12 @@ class TopicsController < ApplicationController
   before_action :set_topic, only: [ :show, :edit, :update, :destroy]
 
   def index
-    @topics = Topic.all
-    @user = current_user
-    @new_topics = @user.topics.order(created_at: :desc).limit(5)
+    @q = Topic.ransack(params[:q])
+    @topics = @q.result.page(params[:page])
+    if user_signed_in?
+      @user = current_user
+      @new_topics = @user.topics.order(created_at: :desc).limit(5)
+    end
   end
 
   def show
