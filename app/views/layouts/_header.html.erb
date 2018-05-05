@@ -7,8 +7,8 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#">
-				タイトル
+			<a class="navbar-brand" href="/topics">
+				僕らの備忘録
 			</a>
 		</div>
 
@@ -19,17 +19,17 @@
 				<li><a href="#">メニューＣ</a></li>
 			</ul>
 			<p class="navbar-text">ようこそ ゲスト さん。</p>
+	    <div class="collapse navbar-collapse" id="navbar-collapse-menu">
+	       <ul class="nav navbar-nav navbar-right">
+	         <% if user_signed_in? %>
+	           <li><%= link_to "設定変更", edit_user_registration_path %></li>
+	           <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+	         <% else %>
+	           <li><%= link_to "新規登録", new_user_registration_path %></li>
+	           <li><%= link_to "ログイン", new_user_session_path %></li>
+	         <% end %>
+	       </ul>
+	     </div><!-- /.navbar-collapse -->
 		</div>
-    <div class="collapse navbar-collapse" id="navbar-collapse-menu">
-       <ul class="nav navbar-nav navbar-right">
-         <% if user_signed_in? %>
-           <li><%= link_to "設定変更", edit_user_registration_path %></li>
-           <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
-         <% else %>
-           <li><%= link_to "新規登録", new_user_registration_path %></li>
-           <li><%= link_to "ログイン", new_user_session_path %></li>
-         <% end %>
-       </ul>
-     </div><!-- /.navbar-collapse -->
 	</div>
 </nav>

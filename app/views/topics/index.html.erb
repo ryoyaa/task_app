@@ -1,7 +1,22 @@
-<h1>Topic 一覧</h1>
-<ul>
-  <% @topics.each do |topic|  %>
-    <li><%= link_to topic.title, topic_path(topic) %></li>
-  <% end %>
-</ul>
-<%= link_to "投稿", new_topic_path %>
+<div class="topic-index-wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <h1>Topic 一覧</h1>
+        <ul>
+          <% @topics.each do |topic|  %>
+            <div class="row">
+              <div class="col-md-9">
+                <div class="topic-index-single">
+                  <li><%= link_to topic.title, topic_path(topic) %></li>
+                </div>
+              </div>
+            </div>
+
+          <% end %>
+        </ul>
+        <%= link_to "投稿", new_topic_path %>
+      </div>
+    </div>
+  </div>
+</div>
