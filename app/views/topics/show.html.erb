@@ -1,2 +1,33 @@
-<h1>Topics#show</h1>
-<p>Find me in app/views/topics/show.html.erb</p>
+<div class="row">
+  <div class="col-md-9">
+    <div class="topic-container">
+      <div class="topic-user">
+        <h1><%= @topic.user.name %></h1>
+        <p><%= @topic.updated_at %></p>
+      </div>
+      <div class="topic-main">
+        <div class="topic-title">
+          <h1><%= @topic.title %></h1>
+          <hr>
+          <h3><%= @topic.description %></h3>
+        </div>
+        <div class="topic-img">
+          <p>
+            <strong>画像</strong>
+            <% if @topic.image? %>
+              <div class="thubnail">
+                <%= image_tag(@topic.image) %>
+              </div>
+            <% end  %>
+          </p>
+        </div>
+        <hr>
+        <div class="topic-body">
+          <p><%= @topic.content %></p>
+        </div>
+      </div>
+      <%= link_to '編集', edit_topic_path(@topic), class: "btn btn-default" %>
+      <%= link_to '戻る', topics_path, class: "btn btn-default" %>
+    </div>
+  </div>
+</div>
