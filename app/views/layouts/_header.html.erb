@@ -14,10 +14,9 @@
 	<% if user_signed_in? %>
 		<div class="collapse navbar-collapse" id="navbarEexample5">
 			<ul class="nav navbar-nav">
-				<li><a href="#">僕の備忘録</a></li>
-					<li class="active"><a href="/topics">みんなの備忘録</a></li>
-					<li><a href="#">人気の備忘録</a></li>
-					<li class="active"><a href="#">お気に入りの備忘録</a></li>
+				<li class="active"><a href="#">僕の備忘録</a></li>
+					<li><a href="/topics">みんなの備忘録</a></li>
+					<li class="active"><a href="/favorites">お気に入りの備忘録</a></li>
 			</ul>
 				<p class="navbar-text">ようこそ<%= current_user.name %>さん。</p>
 		    <div class="collapse navbar-collapse" id="navbar-collapse-menu">

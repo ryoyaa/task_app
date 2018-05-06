@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-9">
+    <div class="col-md-12">
       <div class="topic-container">
         <div class="topic-user">
           <h1><%= @topic.user.name %></h1>
@@ -28,9 +28,9 @@
           </div>
         </div>
         <% if current_user && current_user.id == @topic.user_id %>
-          <%= link_to '編集', edit_topic_path(@topic), class: "btn btn-default" %>
+          <%= link_to '編集', edit_topic_path(@topic), class: "btn btn-primary" %>
         <% end %>
-        <%= link_to '戻る', topics_path, class: "btn btn-default" %>
+        <%= link_to '戻る', topics_path, class: "btn btn-primary" %>
       </div>
     </div>
   </div>
