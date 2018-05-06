@@ -11,24 +11,32 @@
 				僕らの備忘録
 			</a>
 		</div>
-
+	<% if user_signed_in? %>
 		<div class="collapse navbar-collapse" id="navbarEexample5">
 			<ul class="nav navbar-nav">
 				<li><a href="#">僕の備忘録</a></li>
-				<li class="active"><a href="#">みんなの備忘録</a></li>
-				<li><a href="#">人気の備忘録</a></li>
-				<li class="active"><a href="#">お気に入りの備忘録</a></li>
+					<li class="active"><a href="/topics">みんなの備忘録</a></li>
+					<li><a href="#">人気の備忘録</a></li>
+					<li class="active"><a href="#">お気に入りの備忘録</a></li>
 			</ul>
+				<p class="navbar-text">ようこそ<%= current_user.name %>さん。</p>
+		    <div class="collapse navbar-collapse" id="navbar-collapse-menu">
+		       <ul class="nav navbar-nav navbar-right">
+		           <li><%= link_to "設定変更", edit_user_registration_path %></li>
+		           <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+	<% else %>
+	 <div class="collapse navbar-collapse" id="navbarEexample5">
+		 <ul class="nav navbar-nav">
+				<li class="active"><a href="/topics">みんなの備忘録</a></li>
+				<li><a href="#">人気の備忘録</a></li>
+		 </ul>
 			<p class="navbar-text">ようこそ ゲスト さん。</p>
-	    <div class="collapse navbar-collapse" id="navbar-collapse-menu">
-	       <ul class="nav navbar-nav navbar-right">
-	         <% if user_signed_in? %>
-	           <li><%= link_to "設定変更", edit_user_registration_path %></li>
-	           <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
-	         <% else %>
+			<div class="collapse navbar-collapse" id="navbar-collapse-menu">
+				 <ul class="nav navbar-nav navbar-right">
+
 	           <li><%= link_to "新規登録", new_user_registration_path %></li>
 	           <li><%= link_to "ログイン", new_user_session_path %></li>
-	         <% end %>
+	  <% end %>
 	       </ul>
 	     </div><!-- /.navbar-collapse -->
 		</div>

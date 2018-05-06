@@ -4,7 +4,7 @@ class TopicsController < ApplicationController
 
   def index
     @q = Topic.ransack(params[:q])
-    @topics = @q.result.page(params[:page]).per(8)
+    @topics = @q.result.page(params[:page]).per(8).order(updated_at: :desc)
     if user_signed_in?
       @user = current_user
       @new_topics = @user.topics.order(created_at: :desc).limit(5)
